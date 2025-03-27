@@ -119,7 +119,7 @@ async function retrieveAnswer(query) {
  * Main function to process a query.
  */
 async function main() {
-  const query = "Double bed with a lower section that converts into a sofa";
+  const query = "Create a multi-angle, adjustable webcam and light holder for streamers, content creators";
   const answer = await retrieveAnswer(query);
   let isAssembly=1;
   let parsedAnswer;
@@ -185,16 +185,16 @@ parsedAnswer.forEach((component, i) => {
       position = parsedAnswer[i].position;}
       else{ 
         const position_format =` "position": {"x": , "y": , "z":}`
-        const prompt = "using the data in :"+placement.response.text()+"assign the position of the component:"+ parsedAnswer[i].Component.toString()+"in the format:"+position_format+"print only the json. Corner of the assembly is the origin of the coordinate system.";
+        const prompt = "using the data in :"+placement.response.text()+"assign the position of the component:"+ parsedAnswer[i].Component.toString()+"in the format:"+position_format+"print the answer only the json format mention and give only json. Corner of the assembly is the origin of the coordinate system.NO NULL VALUES ALLOWED";
         const position_cont = (await model2.generateContent(prompt)).response.text();
         const jsonMatch = position_cont.match(/{[\s\S]*}/);
-        position=JSON.parse(jsonMatch[0]);
+        position=JSON.parse(jsonMatch[0]).position;
       }
       console.log(position);
     
     let response_json = await modelGenerator.default(JSON.stringify(parsedAnswer[i]),isAssembly); // Call the function from the respective module
     const response = JSON.parse(response_json.response);
-    response.position = position.position;
+    response.position = position;
     console.log(response);
     atomic_components.push(JSON.stringify(response));
   }
@@ -230,13 +230,13 @@ else{
         const prompt = "assign the position of the component in the format:"+position_format+"print only the json. Corner of the assembly is the origin of the coordinate system.";
         const position_cont = (await model2.generateContent(prompt)).response.text();
         const jsonMatch = position_cont.match(/{[\s\S]*}/);
-        position=JSON.parse(jsonMatch[0]);
+        position=JSON.parse(jsonMatch[0]).position;
       }
       console.log(position);
     
     let response_json = await modelGenerator.default(query,isAssembly); // Call the function from the respective module
     const response = JSON.parse(response_json.response);
-    response.position = position.position;
+    response.position = position;
     console.log(response);
 
 }
