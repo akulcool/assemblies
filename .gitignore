@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+npm-debug.log
+package-lock.json
+.DS_Store
+bracket/node_modules
+demofixed.js
+embed.js
+atomic_models.json
+qa.txt
+qa1.txt
