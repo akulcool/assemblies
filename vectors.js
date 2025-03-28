@@ -119,7 +119,7 @@ async function retrieveAnswer(query) {
  * Main function to process a query.
  */
 async function main() {
-  const query = "Create a multi-angle, adjustable webcam and light holder for streamers, content creators";
+  const query = "Cot with a pull-out study table for kids, utilizing lower storage space";
   const answer = await retrieveAnswer(query);
   let isAssembly=1;
   let parsedAnswer;
@@ -151,8 +151,13 @@ const atomic_components = [];
 
 const placement = await model2.generateContent("how can I place the components in the assembly such that i am able to create final model.The components are as follows:\n"+JSON.stringify(parsedAnswer)+"and the objective is:"+query+"assume that i have received the atomic components only and want to assemble it so for that matter give me a pointwise manual to be followed...Provide only the points"); // Call the function from the respective module
 
-console.log(placement.response.text());
-
+let position_full; 
+const position_format =` "{"x": , "y": , "z":}`
+const prompt = "using the data in :"+placement.response.text()+"assign the position of the component:"+"in the format:"+position_format+"print the answer only the json format mention and give only json. Corner of the assembly is the origin of the coordinate system.NO NULL VALUES ALLOWED.It should be in a key value format with key as the component name and value as the position";
+const position_cont = (await model2.generateContent(prompt)).response.text();
+const jsonMatch = position_cont.match(/{[\s\S]*}/);
+position_full=JSON.parse(jsonMatch[0])
+console.log(position_full);
 
 const bracketShapes = new Set(['L', 'U', 'Z', 'T', 'C']);
 
@@ -184,11 +189,7 @@ parsedAnswer.forEach((component, i) => {
     
       position = parsedAnswer[i].position;}
       else{ 
-        const position_format =` "position": {"x": , "y": , "z":}`
-        const prompt = "using the data in :"+placement.response.text()+"assign the position of the component:"+ parsedAnswer[i].Component.toString()+"in the format:"+position_format+"print the answer only the json format mention and give only json. Corner of the assembly is the origin of the coordinate system.NO NULL VALUES ALLOWED";
-        const position_cont = (await model2.generateContent(prompt)).response.text();
-        const jsonMatch = position_cont.match(/{[\s\S]*}/);
-        position=JSON.parse(jsonMatch[0]).position;
+        position = position_full[parsedAnswer[i]["Component"]];
       }
       console.log(position);
     
@@ -245,7 +246,7 @@ else{
 }
 
 // Uncomment to store Q&A pairs from a file
-//await storeQAPairs("qa1.txt");
+//await storeQAPairs("qa.txt");
 
 // Uncomment to test the retrieval
 await main();
