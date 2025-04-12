@@ -1,0 +1,177 @@
+[
+  {
+    "prompt": "Raspberry Pi 4 enclosure with L bracket camera holder",
+    "components": [
+      {"Component": "Raspberry Pi 4 enclosure", "Component Type": "enclosure", "Length (mm)": 90, "Width (mm)": 70, "Height (mm)": 30, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "L bracket", "Component Type": "bracket", "Length (mm)": 100, "Width (mm)": 50, "Height (mm)": 80, "position": {"x": 10, "y": 90, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "ESP32 enclosure with Z bracket sensor stand",
+    "components": [
+      {"Component": "ESP32 enclosure", "Component Type": "enclosure", "Length (mm)": 75, "Width (mm)": 50, "Height (mm)": 25, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "Z bracket", "Component Type": "bracket", "Length (mm)": 120, "Width (mm)": 40, "Height (mm)": 90, "position": {"x": 10, "y": 80, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Arduino Uno enclosure with Offset bracket battery support",
+    "components": [
+      {"Component": "Arduino Uno enclosure", "Component Type": "enclosure", "Length (mm)": 100, "Width (mm)": 80, "Height (mm)": 35, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "Offset bracket", "Component Type": "bracket", "Length (mm)": 150, "Width (mm)": 60, "Height (mm)": 110, "position": {"x": 15, "y": 100, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Jetson Nano enclosure with U bracket heat sink holder",
+    "components": [
+      {"Component": "Jetson Nano enclosure", "Component Type": "enclosure", "Length (mm)": 110, "Width (mm)": 90, "Height (mm)": 40, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "U bracket", "Component Type": "bracket", "Length (mm)": 130, "Width (mm)": 55, "Height (mm)": 95, "position": {"x": 10, "y": 110, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Teensy 4.1 enclosure with L bracket cable clip",
+    "components": [
+      {"Component": "Teensy 4.1 enclosure", "Component Type": "enclosure", "Length (mm)": 80, "Width (mm)": 40, "Height (mm)": 20, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "L bracket", "Component Type": "bracket", "Length (mm)": 90, "Width (mm)": 40, "Height (mm)": 70, "position": {"x": 5, "y": 60, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Arduino Nano enclosure with U bracket battery clamp",
+    "components": [
+      {"Component": "Arduino Nano enclosure", "Component Type": "enclosure", "Length (mm)": 60, "Width (mm)": 50, "Height (mm)": 30, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "U bracket", "Component Type": "bracket", "Length (mm)": 1600, "Width (mm)": 50, "Height (mm)": 1000, "position": {"x": 10, "y": 100, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "ESP8266 enclosure with Z bracket wall mount",
+    "components": [
+      {"Component": "ESP8266 enclosure", "Component Type": "enclosure", "Length (mm)": 65, "Width (mm)": 45, "Height (mm)": 20, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "Z bracket", "Component Type": "bracket", "Length (mm)": 110, "Width (mm)": 35, "Height (mm)": 85, "position": {"x": 10, "y": 70, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "BeagleBone Black enclosure with Offset bracket sensor arm",
+    "components": [
+      {"Component": "BeagleBone Black enclosure", "Component Type": "enclosure", "Length (mm)": 95, "Width (mm)": 75, "Height (mm)": 30, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "Offset bracket", "Component Type": "bracket", "Length (mm)": 125, "Width (mm)": 50, "Height (mm)": 100, "position": {"x": 10, "y": 100, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Raspberry Pi Zero enclosure with L bracket support leg",
+    "components": [
+      {"Component": "Raspberry Pi Zero enclosure", "Component Type": "enclosure", "Length (mm)": 65, "Width (mm)": 35, "Height (mm)": 20, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "L bracket", "Component Type": "bracket", "Length (mm)": 90, "Width (mm)": 40, "Height (mm)": 70, "position": {"x": 10, "y": 50, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Odroid C4 enclosure with U bracket sensor mount",
+    "components": [
+      {"Component": "Odroid C4 enclosure", "Component Type": "enclosure", "Length (mm)": 100, "Width (mm)": 80, "Height (mm)": 35, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "U bracket", "Component Type": "bracket", "Length (mm)": 140, "Width (mm)": 60, "Height (mm)": 90, "position": {"x": 10, "y": 100, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "STM32 Nucleo enclosure with Z bracket clamp",
+    "components": [
+      {"Component": "STM32 Nucleo enclosure", "Component Type": "enclosure", "Length (mm)": 85, "Width (mm)": 60, "Height (mm)": 30, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "Z bracket", "Component Type": "bracket", "Length (mm)": 120, "Width (mm)": 45, "Height (mm)": 100, "position": {"x": 10, "y": 80, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Arduino Mega enclosure with Offset bracket cooling stand",
+    "components": [
+      {"Component": "Arduino Mega enclosure", "Component Type": "enclosure", "Length (mm)": 120, "Width (mm)": 90, "Height (mm)": 40, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "Offset bracket", "Component Type": "bracket", "Length (mm)": 150, "Width (mm)": 65, "Height (mm)": 110, "position": {"x": 15, "y": 100, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Raspberry Pi 3B enclosure with camera mount",
+    "components": [
+      {"Component": "Raspberry Pi 3B enclosure", "Component Type": "enclosure", "Length (mm)": 100, "Width (mm)": 70, "Height (mm)": 30, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "offset bracket", "Component Type": "bracket", "Length (mm)": 1600, "Width (mm)": 50, "Height (mm)": 1000, "position": {"x": 10, "y": 100, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "NodeMCU enclosure with U bracket clip",
+    "components": [
+      {"Component": "NodeMCU enclosure", "Component Type": "enclosure", "Length (mm)": 70, "Width (mm)": 40, "Height (mm)": 25, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "U bracket", "Component Type": "bracket", "Length (mm)": 110, "Width (mm)": 45, "Height (mm)": 85, "position": {"x": 10, "y": 90, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Arduino Pro Mini enclosure with L bracket slot",
+    "components": [
+      {"Component": "Arduino Pro Mini enclosure", "Component Type": "enclosure", "Length (mm)": 55, "Width (mm)": 35, "Height (mm)": 20, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "L bracket", "Component Type": "bracket", "Length (mm)": 85, "Width (mm)": 35, "Height (mm)": 70, "position": {"x": 10, "y": 60, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Pi Pico enclosure with Z bracket mount",
+    "components": [
+      {"Component": "Pi Pico enclosure", "Component Type": "enclosure", "Length (mm)": 60, "Width (mm)": 30, "Height (mm)": 20, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "Z bracket", "Component Type": "bracket", "Length (mm)": 95, "Width (mm)": 30, "Height (mm)": 75, "position": {"x": 10, "y": 70, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Feather M4 enclosure with Offset bracket prop",
+    "components": [
+      {"Component": "Feather M4 enclosure", "Component Type": "enclosure", "Length (mm)": 70, "Width (mm)": 40, "Height (mm)": 25, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "Offset bracket", "Component Type": "bracket", "Length (mm)": 110, "Width (mm)": 40, "Height (mm)": 90, "position": {"x": 10, "y": 80, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Raspberry Pi CM4 enclosure with U bracket base mount",
+    "components": [
+      {"Component": "Raspberry Pi CM4 enclosure", "Component Type": "enclosure", "Length (mm)": 85, "Width (mm)": 60, "Height (mm)": 25, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "U bracket", "Component Type": "bracket", "Length (mm)": 120, "Width (mm)": 50, "Height (mm)": 95, "position": {"x": 10, "y": 90, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Micro:bit enclosure with L bracket camera mount",
+    "components": [
+      {"Component": "Micro:bit enclosure", "Component Type": "enclosure", "Length (mm)": 65, "Width (mm)": 55, "Height (mm)": 20, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "L bracket", "Component Type": "bracket", "Length (mm)": 90, "Width (mm)": 40, "Height (mm)": 75, "position": {"x": 10, "y": 60, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Raspberry Pi 4 enclosure with L and U bracket mounts",
+    "components": [
+      {"Component": "Raspberry Pi 4 enclosure", "Component Type": "enclosure", "Length (mm)": 90, "Width (mm)": 70, "Height (mm)": 30, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "L bracket", "Component Type": "bracket", "Length (mm)": 100, "Width (mm)": 50, "Height (mm)": 80, "position": {"x": 10, "y": 90, "z": 0}},
+      {"Component": "U bracket", "Component Type": "bracket", "Length (mm)": 110, "Width (mm)": 45, "Height (mm)": 85, "position": {"x": -10, "y": 90, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Arduino Mega enclosure with Z and Offset bracket stand",
+    "components": [
+      {"Component": "Arduino Mega enclosure", "Component Type": "enclosure", "Length (mm)": 120, "Width (mm)": 90, "Height (mm)": 40, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "Z bracket", "Component Type": "bracket", "Length (mm)": 130, "Width (mm)": 50, "Height (mm)": 100, "position": {"x": 10, "y": 110, "z": 0}},
+      {"Component": "Offset bracket", "Component Type": "bracket", "Length (mm)": 140, "Width (mm)": 60, "Height (mm)": 110, "position": {"x": -10, "y": 100, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "ESP32 enclosure with dual U brackets for cooling and mounting",
+    "components": [
+      {"Component": "ESP32 enclosure", "Component Type": "enclosure", "Length (mm)": 75, "Width (mm)": 50, "Height (mm)": 25, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "U bracket", "Component Type": "bracket", "Length (mm)": 100, "Width (mm)": 40, "Height (mm)": 80, "position": {"x": 10, "y": 70, "z": 0}},
+      {"Component": "U bracket", "Component Type": "bracket", "Length (mm)": 100, "Width (mm)": 40, "Height (mm)": 80, "position": {"x": -10, "y": 70, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "STM32 Nucleo enclosure with L, Z, and Offset brackets for modular expansion",
+    "components": [
+      {"Component": "STM32 Nucleo enclosure", "Component Type": "enclosure", "Length (mm)": 85, "Width (mm)": 60, "Height (mm)": 30, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "L bracket", "Component Type": "bracket", "Length (mm)": 90, "Width (mm)": 45, "Height (mm)": 70, "position": {"x": 15, "y": 85, "z": 0}},
+      {"Component": "Z bracket", "Component Type": "bracket", "Length (mm)": 95, "Width (mm)": 40, "Height (mm)": 75, "position": {"x": -15, "y": 85, "z": 0}},
+      {"Component": "Offset bracket", "Component Type": "bracket", "Length (mm)": 100, "Width (mm)": 50, "Height (mm)": 85, "position": {"x": 0, "y": 100, "z": 0}}
+    ]
+  },
+  {
+    "prompt": "Jetson Nano enclosure with 2 L brackets and 1 U bracket for stability",
+    "components": [
+      {"Component": "Jetson Nano enclosure", "Component Type": "enclosure", "Length (mm)": 110, "Width (mm)": 90, "Height (mm)": 40, "position": {"x": 0, "y": 0, "z": 0}},
+      {"Component": "L bracket", "Component Type": "bracket", "Length (mm)": 100, "Width (mm)": 50, "Height (mm)": 80, "position": {"x": 15, "y": 100, "z": 0}},
+      {"Component": "L bracket", "Component Type": "bracket", "Length (mm)": 100, "Width (mm)": 50, "Height (mm)": 80, "position": {"x": -15, "y": 100, "z": 0}},
+      {"Component": "U bracket", "Component Type": "bracket", "Length (mm)": 110, "Width (mm)": 60, "Height (mm)": 90, "position": {"x": 0, "y": 120, "z": 0}}
+    ]
+  }
+]

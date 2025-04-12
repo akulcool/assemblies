@@ -75,8 +75,8 @@ async function generateEmbedding(text) {
  */
 async function storeQAPairs(filename) {
   const qaPairs = readQAPairs(filename);
-
-  for (const { prompt, components } of qaPairs) {
+ 
+for (const { prompt, components } of qaPairs) {
     const vector = await generateEmbedding(prompt.toString());
 
     // Ensure the vector is in the correct format before upserting to Pinecone
@@ -86,9 +86,9 @@ async function storeQAPairs(filename) {
           id: prompt,  // Using prompt as the ID
           values: vector,
           metadata:{ components } , // Store components JSON as a string
-        },
+        }
       ]);
-    }
+}
   }
   console.log("Q&A pairs stored successfully!");
 }
@@ -119,7 +119,7 @@ async function retrieveAnswer(query) {
  * Main function to process a query.
  */
 async function main() {
-  const query = "Cot with a pull-out study table for kids, utilizing lower storage space";
+  const query = "Cot with an integrated Bluetooth speaker in the headboard";
   const answer = await retrieveAnswer(query);
   let isAssembly=1;
   let parsedAnswer;
@@ -246,7 +246,7 @@ else{
 }
 
 // Uncomment to store Q&A pairs from a file
-//await storeQAPairs("qa.txt");
+//await storeQAPairs("qa2.txt");
 
 // Uncomment to test the retrieval
 await main();

@@ -36,12 +36,14 @@ function fillPolygonMissingValues(obj) {
     if (!obj.shell) obj.shell = {};
     obj.shell.hasShell ??= getRandomBoolean();
     obj.shell.wallThickness ??= getRandomNumber(1, 5);
-    obj.shell.wallType ??= getRandomString(["Closed Bottom", "Through & Through"]);
+    obj.shell.wallType ??= getRandomString(["1", "2"]);
     
     if (!obj.cutouts) obj.cutouts = [];
     obj.cutouts.forEach(cutout => {
         cutout.Xvalue ??= getRandomNumber();
         cutout.Yvalue ??= getRandomNumber();
+        cutout.position ??= getRandomString(["top", "bottom", "front", "back", "right", "left"]);
+        cutout.shape ??= getRandomNumber(1, 10);
         cutout.depth ??= getRandomNumber(1, 5);
         cutout.sideLength ??= getRandomNumber(1, 10);
         cutout.length ??= getRandomNumber(1, 20);
@@ -51,17 +53,19 @@ function fillPolygonMissingValues(obj) {
     
     if (!obj.patterns) obj.patterns = [];
     obj.patterns.forEach(pattern => {
-        pattern.shape ??= getRandomString(["circular", "rectangular", "triangle", "rhombus", "pentagon", "hexagon", "heptagon", "octagon", "nonagon", "decagon"]);
+        pattern.shape ??= getRandomNumber(1, 10);
+        pattern.patternType ??= getRandomNumber(1, 2);
+        pattern.circularRadius ??= getRandomNumber(1, 20);  
+        pattern.xSpacing ??= getRandomNumber(1, 20);
+        pattern.ySpacing ??= getRandomNumber(1, 20);
         pattern.sideLength ??= getRandomNumber(1, 10);
         pattern.length ??= getRandomNumber(1, 20);
         pattern.width ??= getRandomNumber(1, 20);
         pattern.style ??= getRandomString(["engraved", "embossed"]);
         pattern.diameter ??= getRandomNumber(1, 20);
         pattern.depth ??= getRandomNumber(1, 5);
-        pattern.position ??= getRandomString(["top", "bottom"]);
+        pattern.position ??= getRandomString(["top", "bottom", "front", "back", "right", "left"]);
         pattern.numberOfPattern ??= getRandomNumber(1, 10);
-        pattern.Xvalue ??= getRandomNumber();
-        pattern.Yvalue ??= getRandomNumber();
     });
     
     return obj;
@@ -72,62 +76,83 @@ function fillPolygonMissingValues(obj) {
 // In-memory store for session-based JSON states
 const sessionStates = {};
 const basejson = `
-    {
+   {
     "polygonDimensions": {
+        "shape": 5,
         "sideLength": ,
-        "height":,
+        "height": 
     },
-    "shell": {
-        "hasShell": ,
-        "wallThickness": ,
-        "wallType": ""
-    },
-   
- 
     "cutouts": [
         {
-            
-            "position": "",
+            "position": "bottom",
             "Xvalue": ,
             "Yvalue": ,
-          
-            "shape": "rectangle",
-            "depth": ,
-            "sideLength":,
+            "depth": 5,
+            "sideLength": ,
+            "shape": ,
             "length": ,
             "width": ,
-            "diameter": 
+            "diameter": 7
+        },
+        {
+            "position": "top",
+            "Xvalue": ,
+            "Yvalue": ,
+            "depth": 3,
+            "sideLength": ,
+            "shape": ,
+            "length": ,
+            "width": ,
+            "diameter": 7
         }
     ],
-   "patterns": [
+    "patterns": [
         {
-            "shape": "",
-            "sideLength":,
-            "length": ,
+            "patternType": 2,
+            "shape": ,
+            "sideLength": ,
+            "position": "top",
+            "circularRadius": ,
+            "length":,
             "width": ,
-            "style": "",
+            "style": "engraved",
             "diameter": ,
-            "depth": ,
-            "position": "",
             "numberOfPattern": ,
-           
-            "Xvalue": ,
-            "Yvalue": 
-        
-        }
-    ]
-}`;
+            "depth": ,
+            "xSpacing": ,
+            "ySpacing": 
+        },
+    ],
+    "shell": {
+        "hasShell": true,
+        "wallThickness": 2,
+        "wallType": "1"
+    }`;
 
 
 // Function to generate or modify content with state awareness
 async function generateContent(userPromptPart,isAssembly) {
   try {
+
+    const shape_mapping = {
+        "circular": "1",
+        "rectangle": "2",
+        "triangle": "3",
+        "rhombus": "4",
+        "pentagon": "5",
+        "hexagon": "6",
+        "heptagon": "7",
+        "octagon": "8",
+        "nonagon": "9",
+        "decagon": "10"
+    }
     
     const dimjson  = `
     {
     "polygonDimensions": {
+        "shape": ,
         "sideLength": ,
-        "height":,
+        "height":
     },
     "shell": {
         "hasShell": ,
@@ -135,26 +160,25 @@ async function generateContent(userPromptPart,isAssembly) {
         "wallType": ""
     },`
     
-    const dimensions = "Using the following dats present in :"+userPromptPart+"assign dimensions in this format:"+dimjson+"note that wallType is either 'Closed Bottom' or 'Through & Through' .";
+    const dimensions = "Using the following dats present in :"+userPromptPart+"assign dimensions in this format:"+dimjson+"note that wallType is either 'Closed Bottom(IF WE CHOOSE THIS OPTION THEN Fill the field with '1'(string form))' or 'Through & Through(IF WE CHOOSE THIS OPTION THEN Fill the field with '2'(string form))' .In case of shape.Use the data present in"+shape_mapping+"for the shape field in the json, fill the number in the field for example if i want triangle check for triangle in the mapping and fill shape field with the corresponding numeric code and similarly for other shapes";
     
     const dimensions_cont = (await model.generateContent(dimensions)).response.text();
 
     const cutoutjson = `"cutouts": [
-        {
-            
-            "position": "top",
+        {           
+         "position": "top",
             "Xvalue": ,
             "Yvalue": ,
-            "shape": "rectangle",
-            "depth": ,
-            "sideLength":,
+            "depth": 3,
+            "sideLength": ,
+            "shape": ,
             "length": ,
             "width": ,
-            "diameter": 
+            "diameter": 7
         }
     ],`
 
-    const cutout = "Using the following data present in :"+userPromptPart+"assign cutouts in this format:"+cutoutjson+"note that shape is either 'rectangle' or 'circle' . position is either 'top' or 'bottom'. incase of 'rectangle' shape assign diameter as 60 and in case of 'circle' assign length and width and depth as 60 . Using a standard coordinate system where origin is the corner of the sides assign Xvalue and Yvalue . Ensure that the cutout is within the dimensions of the polygon.";
+    const cutout = "Using the following data present in :"+userPromptPart+"assign cutouts in this format:"+cutoutjson+"ssign cutouts in this format:"+cutoutjson+"In case of shape.Use the data present in"+shape_mapping+"for the shape field in the json, fill the number in the field for example if i want triangle check for triangle in the mapping and fill shape field with the corresponding numeric code and similarly for other shapes . position is either 'top' or 'bottom'. incase of 'rectangle' shape assign diameter as 60 and in case of 'circle' assign length and width and depth as 60 . Using a standard coordinate system where origin is the corner of the sides assign Xvalue and Yvalue . Ensure that the cutout is within the dimensions of the polygon.";
     
     const cutout_cont = (await model.generateContent(cutout)).response.text();
 
@@ -163,23 +187,24 @@ async function generateContent(userPromptPart,isAssembly) {
 
     const patternjson = `"patterns": [
         {
-            "shape": "",
-            "sideLength":,
-            "length": ,
+         "patternType": 2,
+            "shape": ,
+            "sideLength": ,
+            "position": "top",
+            "circularRadius": ,
+            "length":,
             "width": ,
-            "style": "",
+            "style": "engraved",
             "diameter": ,
-            "depth": ,
-            "position": "",
             "numberOfPattern": ,
-           
-            "Xvalue": ,
-            "Yvalue": 
+            "depth": ,
+            "xSpacing": ,
+            "ySpacing": 
         
         }
     ]`
 
-  const pattern = "Using the following data present in :"+userPromptPart+"assign cutouts in this format:"+patternjson+"note that shape is either one of these : ''circular', 'rectangular', 'triangle', 'rhombus', 'pentagon', 'hexagon', 'heptagon', 'octagon', 'nonagon', 'decagon''. position is either 'top' or 'bottom' ..Style is either 'engraved' or 'embossed'. incase of 'rectangle' shape assign diameter as 60 and in case of 'circle' assign length and width and depth as 60 . Using a standard coordinate system where origin is the corner of the sides assign Xvalue and Yvalue . Ensure that the patterns are within the dimensions of the polygon.";
+    const pattern = "Using the following data present in :"+userPromptPart+"assign cutouts in this format:"+patternjson+"In case of shape.Use the data present in"+shape_mapping+"for the shape field in the json, fill the number in the field for example if i want triangle check for triangle in the mapping and fill shape field with the corresponding numeric code an similarly for other shapes.. position is either 'top' or 'bottom' or 'left' or 'right' or 'front' or 'back' .Style is either 'engraved' or 'embossed'. incase of 'rectangle' shape assign diameter as 60 and in case of 'circle' assign length and width and depth as 60 . Using a standard coordinate system where origin is the corner of the sides assign Xvalue and Yvalue and similarly the xSpacing and ySpacing . Ensure that the patterns are within the dimensions of the polygon.";
   
   const pattern_cont = (await model.generateContent(pattern)).response.text();
 
