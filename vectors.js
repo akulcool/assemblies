@@ -119,7 +119,7 @@ async function retrieveAnswer(query) {
  * Main function to process a query.
  */
 async function main() {
-  const query = "Cot with an integrated Bluetooth speaker in the headboard";
+  const query = "Bed with a built-in bookshelf in the headboard for easy storage";
   const answer = await retrieveAnswer(query);
   let isAssembly=1;
   let parsedAnswer;

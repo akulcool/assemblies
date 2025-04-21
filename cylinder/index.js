@@ -81,8 +81,8 @@ const sessionStates = {};
 const basejson = `
     {
     "cylinderDimensions": {
-        "diameter": 55,
-        "height": 50
+        "diameter": ,
+        "height": 
     },
     "cutouts": [
         {
@@ -160,58 +160,7 @@ async function generateContent(userPromptPart,isAssembly) {
     
     const dimensions_cont = (await model.generateContent(dimensions)).response.text();
 
-    const cutoutjson = `"cutouts": [
-        {
-            
-             "position": "bottom",
-            "Xvalue": ,
-            "Yvalue": ,
-            "Zvalue": ,
-            "Zrotation": ,
-            "depth": 5,
-            "sideLength": ,
-            "shape": ,
-            "length": ,
-            "width": ,
-            "diameter": 7 
-        }
-    ]`
-
-    const cutout = "Using the following data present in :"+userPromptPart+"assign cutouts in this format:"+cutoutjson+"In case of shape.Use the data present in"+shape_mapping+"for the shape field in the json, fill the number in the field for example if i want triangle check for triangle in the mapping and fill shape field with the corresponding numeric code and similarly for other shapes. position is either 'top' or 'bottom' or 'left' or 'right' or 'front' or 'back' . incase of 'rectangle' shape assign diameter as 60 and in case of 'circle' assign length and width and depth as 60 . Using a standard coordinate system where origin is the corner of the sides assign Xvalue and Yvalue . Ensure that the cutout is within the dimensions of the cylinder.";
-    
-    const cutout_cont = (await model.generateContent(cutout)).response.text();
-
-
-
-
-    const patternjson = ` "patterns": [
-        {
-           "patternType": 2,
-            "shape": ,
-            "sideLength": ,
-            "position": "top",
-            "circularRadius": 10,
-            "length": ,
-            "width": ,
-            "style": "embossed",
-            "diameter": ,
-            "numberOfPattern": ,
-            "depth": ,
-            "Xvalue": ,
-            "Yvalue": ,
-            "xSpacing": ,
-            "ySpacing": 
-        
-        }
-    ]`
-
-    const pattern = "Using the following data present in :"+userPromptPart+"assign cutouts in this format:"+patternjson+"In case of shape.Use the data present in"+shape_mapping+"for the shape field in the json, fill the number in the field for example if i want triangle check for triangle in the mapping and fill shape field with the corresponding numeric code an similarly for other shapes.. position is either 'top' or 'bottom' or 'left' or 'right' or 'front' or 'back' .Style is either 'engraved' or 'embossed'. incase of 'rectangle' shape assign diameter as 60 and in case of 'circle' assign length and width and depth as 60 . Using a standard coordinate system where origin is the corner of the sides assign Xvalue and Yvalue and similarly the xSpacing and ySpacing . Ensure that the patterns are within the dimensions of the cube.";
-  
-  const pattern_cont = (await model.generateContent(pattern)).response.text();
-
-
-
-  const final = "using the data and jsons provided:"+dimensions_cont+" "+cutout_cont+" "+pattern_cont+" "+"generate the final json in the exact format:."+basejson+"print only the json";
+  const final = "using the data and jsons provided:"+dimensions_cont+"generate the final json in the exact format:."+basejson+"print only the json";
 
     const finalJson = (await model.generateContent(final)).response.text();
 
