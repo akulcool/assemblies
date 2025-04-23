@@ -22,7 +22,7 @@ console.log("Pinecone set up!!");
 const index = pinecone.Index(process.env.PINECONE_INDEX_NAME);
 
 // Initialize Gemini AI
-const genAI = new GoogleGenerativeAI("AIzaSyA2iDVWxSJBHFp3OcpGj_ftryE28FPnZLA");
+const genAI = new GoogleGenerativeAI("AIzaSyA71dejbWMRK8jTqRhUIoa_uvWIjj0Lpe4");
 const model = genAI.getGenerativeModel({ model: "text-embedding-004" });
 const model2 = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
@@ -119,7 +119,7 @@ async function retrieveAnswer(query) {
  * Main function to process a query.
  */
 async function main() {
-  const query = "Bed with a built-in bookshelf in the headboard for easy storage";
+  const query = "Double bed with pullout drawers for storing clothes and accesories";
   const answer = await retrieveAnswer(query);
   let isAssembly=1;
   let parsedAnswer;

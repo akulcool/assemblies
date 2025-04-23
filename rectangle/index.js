@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Initialize Google Generative AI with your API key
-const genAI = new GoogleGenerativeAI("AIzaSyA2iDVWxSJBHFp3OcpGj_ftryE28FPnZLA");
+const genAI = new GoogleGenerativeAI("AIzaSyA71dejbWMRK8jTqRhUIoa_uvWIjj0Lpe4");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 
