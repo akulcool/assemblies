@@ -17,7 +17,8 @@ async function generate_gears(context) {
     "thickness": ,
     "centerholeradius": ,
     "isCustomPressureAngle": false,
-    "customPressureAngle": 0
+    "customPressureAngle": 0,
+    "color": #000000
   }`;
 
   const promptL1 = `1) Analyse the user requirements : ${context}
@@ -43,7 +44,7 @@ async function generate_gears(context) {
      The yellow line represents circularPitch.
 
   7) circularPitch should be at least 2x centerholeradius.
-     clearance should be less than circularPitch.
+     clearance should be less than circularPitch. And also Color to be in hex format only 
 
   8) **Return ONLY the JSON response** in this exact format:
      ${bracketConfig}`;

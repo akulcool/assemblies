@@ -1,1 +1,1 @@
-Double bed with pullout drawers for storing clothes and accesories
+JSON.stringify(parsedAnswer[i])

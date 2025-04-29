@@ -79,42 +79,73 @@ function fillMissingValues(obj) {
 // In-memory store for session-based JSON states
 const sessionStates = {};
 const basejson = `
-    {
-    "cylinderDimensions": {
-        "diameter": ,
-        "height": 
+  
+ {
+    "cubeDimensions": {
+        "length": ,
+        "width": ,
+        "height": ,
+        "color": "#000000"
     },
     "cutouts": [
         {
-            "position": "bottom",
+            "position": "top",
             "Xvalue": ,
             "Yvalue": ,
             "Zvalue": ,
-            "Zrotation": ,
             "depth": 5,
             "sideLength": ,
             "shape": ,
-            "length": ,
-            "width": ,
-            "diameter": 7
+            "length": 5,
+            "width": 5,
+            "diameter": 
         },
+        {
+            "position": "front",
+            "Xvalue": 0,
+            "Yvalue": 0,
+            "Zvalue": 0,
+            "depth": ,
+            "sideLength": ,
+            "shape": ,
+            "length": 5,
+            "width": 5,
+            "diameter": 
+        }
     ],
     "patterns": [
         {
-            "patternType": 2,
-            "shape": ,
-            "sideLength": ,
+            "patternType": 1,
+            "shape": 1,
+            "sideLength": 4,
             "position": "top",
             "circularRadius": 10,
-            "length": ,
-            "width": ,
-            "style": "embossed",
-            "diameter": ,
-            "numberOfPattern": ,
-            "depth": ,
+            "length": 5,
+            "width": 5,
+            "style": "engraved",
+            "diameter": 5,
+            "numberOfPattern": 4,
+            "depth": 5,
             "Xvalue": ,
             "Yvalue": ,
-            "xSpacing": ,
+            "xSpacing": 10,
+            "ySpacing": 22
+        },
+        {
+            "patternType": 2,
+            "shape": 2,
+            "sideLength": 4,
+            "position": "top",
+            "circularRadius": 10,
+            "length": 5,
+            "width": 5,
+            "style": "embossed",
+            "diameter": 5,
+            "numberOfPattern": 4,
+            "depth": 5,
+            "Xvalue": ,
+            "Yvalue": ,
+            "xSpacing":,
             "ySpacing": 
         }
     ],
@@ -122,9 +153,8 @@ const basejson = `
         "hasShell": true,
         "wallThickness": 2,
         "wallType": "1"
-    }
-}
-`;
+    }`;
+
 
 
 // Function to generate or modify content with state awareness
@@ -136,6 +166,7 @@ async function generateContent(userPromptPart,isAssembly) {
     "cylinderDimensions": {
         "diameter": ,
         "height": ,
+        "color": ""
     },
     "shell": {
         "hasShell": true,
@@ -156,11 +187,11 @@ async function generateContent(userPromptPart,isAssembly) {
         "decagon": "10"
     }
     
-    const dimensions = "Using the following dats present in :"+userPromptPart+"assign dimensions in this format:"+dimjson+"note that wallType is either 'Closed Bottom(IF WE CHOOSE THIS OPTION THEN Fill the field with '1'(string form))' or 'Through & Through(IF WE CHOOSE THIS OPTION THEN Fill the field with '2'(string form))' .";
+    const dimensions = "Using the following dats present in :"+userPromptPart+"assign dimensions in this format:"+dimjson+"note that wallType is either 'Closed Bottom(IF WE CHOOSE THIS OPTION THEN Fill the field with '1'(string form))' or 'Through & Through(IF WE CHOOSE THIS OPTION THEN Fill the field with '2'(string form))' .  Color to be in hex format only ";
     
     const dimensions_cont = (await model.generateContent(dimensions)).response.text();
 
-  const final = "using the data and jsons provided:"+dimensions_cont+"generate the final json in the exact format:."+basejson+"print only the json";
+  const final = "using the data and jsons provided:"+dimensions_cont+"generate the final json in the exact format:."+basejson+"print only the json.";
 
     const finalJson = (await model.generateContent(final)).response.text();
 
@@ -168,6 +199,7 @@ async function generateContent(userPromptPart,isAssembly) {
 
     const fixed_json=fillMissingValues(JSON.parse(jsonMatch[0]));
 
+    console.log(fixed_json);
 
 
 

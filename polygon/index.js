@@ -80,7 +80,8 @@ const basejson = `
     "polygonDimensions": {
         "shape": ,
         "sideLength": ,
-        "height": 
+        "height": ,
+        "color": ""
     },
     "cutouts": [
         {
@@ -127,7 +128,8 @@ const basejson = `
         "hasShell": true,
         "wallThickness": 2,
         "wallType": "1"
-    }`;
+    },
+}`;
 
 
 // Function to generate or modify content with state awareness
@@ -152,7 +154,8 @@ async function generateContent(userPromptPart,isAssembly) {
     "polygonDimensions": {
         "shape": ,
         "sideLength": ,
-        "height":
+        "height": ,
+        "color": ""
     },
     "shell": {
         "hasShell": ,
@@ -160,12 +163,12 @@ async function generateContent(userPromptPart,isAssembly) {
         "wallType": ""
     },`
     
-    const dimensions = "Using the following dats present in :"+userPromptPart+"assign dimensions in this format:"+dimjson+"note that wallType is either 'Closed Bottom(IF WE CHOOSE THIS OPTION THEN Fill the field with '1'(string form))' or 'Through & Through(IF WE CHOOSE THIS OPTION THEN Fill the field with '2'(string form))' .In case of shape.Use the data present in"+shape_mapping+"for the shape field in the json, fill the number in the field for example if i want triangle check for triangle in the mapping and fill shape field with the corresponding numeric code and similarly for other shapes";
+    const dimensions = "Using the following dats present in :"+userPromptPart+"assign dimensions in this format:"+dimjson+"note that wallType is either 'Closed Bottom(IF WE CHOOSE THIS OPTION THEN Fill the field with '1'(string form))' or 'Through & Through(IF WE CHOOSE THIS OPTION THEN Fill the field with '2'(string form))' .In case of shape.Use the data present in"+shape_mapping+"for the shape field in the json, fill the number in the field for example if i want triangle check for triangle in the mapping and fill shape field with the corresponding numeric code and similarly for other shapes. Color to be in hex format only ";
     
     const dimensions_cont = (await model.generateContent(dimensions)).response.text();
 
 
-  const final = "using the data and jsons provided:"+dimensions_cont+"generate the final json in the exact format:."+basejson+"print only the json";
+  const final = "using the data and jsons provided:"+dimensions_cont+"generate the final json in the exact format:."+basejson+"print only the json+";
 
     const finalJson = (await model.generateContent(final)).response.text();
 

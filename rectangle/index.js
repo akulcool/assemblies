@@ -34,6 +34,7 @@ function fillCubeMissingValues(obj) {
     obj.cubeDimensions.length ??= getRandomNumber(5, 50);
     obj.cubeDimensions.width ??= getRandomNumber(5, 50);
     obj.cubeDimensions.height ??= getRandomNumber(5, 50);
+    obj.cubeDimensions.color ??= getRandomString(["#000000", "#FFFFFF", "#FF5733", "#33FF57", "#3357FF"]);
     
     if (!obj.shell) obj.shell = {};
     obj.shell.hasShell ??= getRandomBoolean();
@@ -88,7 +89,8 @@ const basejson = `
     "cubeDimensions": {
         "length": ,
         "width": ,
-        "height": 
+        "height": , 
+        "color": "#000000"
     },
     "cutouts": [
         {
@@ -156,7 +158,8 @@ const basejson = `
         "hasShell": true,
         "wallThickness": 2,
         "wallType": "1"
-    }`;
+    }
+}`;
 
 
 // Function to generate or modify content with state awareness
@@ -169,6 +172,7 @@ async function generateContent(userPromptPart,isAssembly) {
         "length": ,
         "width": ,
         "height": ,
+        "color": ""
     },
     "shell": {
         "hasShell": true,
@@ -176,7 +180,8 @@ async function generateContent(userPromptPart,isAssembly) {
         "wallType": ""
     }`
     
-    const dimensions = "Using the following dats present in :"+userPromptPart+"assign dimensions in this format:"+dimjson+"note that wallType is either 'Closed Bottom(IF WE CHOOSE THIS OPTION THEN Fill the field with '1'(string form))' or 'Through & Through(IF WE CHOOSE THIS OPTION THEN Fill the field with '2'(string form))' .";
+
+    const dimensions = "Using the following dats present in :"+userPromptPart+"assign dimensions in this format:"+dimjson+"note that wallType is either 'Closed Bottom(IF WE CHOOSE THIS OPTION THEN Fill the field with '1'(string form))' or 'Through & Through(IF WE CHOOSE THIS OPTION THEN Fill the field with '2'(string form))' .  Color to be in hex format only ";
     
     const dimensions_cont = (await model.generateContent(dimensions)).response.text();
     const shape_mapping = {
@@ -198,7 +203,6 @@ async function generateContent(userPromptPart,isAssembly) {
     const finalJson = (await model.generateContent(final)).response.text();
 
     const jsonMatch = finalJson.match(/{[\s\S]*}/);
-
     const fixed_json=fillCubeMissingValues(JSON.parse(jsonMatch[0]));
 
 
